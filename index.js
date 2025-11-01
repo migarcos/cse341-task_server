@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.port || 3000;
 
 app.get( '/', (req, res) => {
-    res.send("The changes must be saved after reloading the server");
+    res.send("The server is running now over render.com");
 });
 
 app.listen(port);
