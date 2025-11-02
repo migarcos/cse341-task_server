@@ -1,16 +1,4 @@
-const {getDB} = require('../config/db');
 
-const getData = async (req, res) => {
-    try {
-        const db = getDB();
-        const contacts = await db.collection('contacts').find().toArray();
-        res.json(contacts);
-    }  catch (err) {
-        res.status(500).json({error: "Error retrieving data" });
-    }
-};
-
-module.exports = { getData };
 
 // const data = {
 //     professionalName: 'Miguel Arcos Salazar',
