@@ -1,1 +1,4 @@
 node_modules
+mongoConnection
+contacts.json
+.env

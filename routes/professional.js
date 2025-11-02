@@ -4,6 +4,6 @@ const professionalController = require("../controllers/professional");
 
 const router = express.Router();
 
-router.get("/", professionalController.getData);
+router.get("/contacts", professionalController.getData);
 
 module.exports = router;
