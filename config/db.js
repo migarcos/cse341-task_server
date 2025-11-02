@@ -2,7 +2,8 @@ const { MongoClient } = require('mongodb');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.klll7qw.mongodb.net/?appName=Cluster0`;
+// const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.klll7qw.mongodb.net/?appName=Cluster0`;
+const uri = `mongodb+srv://migarcos:tBUbk4Kc1ehC8lwve@cluster0.klll7qw.mongodb.net/?appName=Cluster0`;
 const client = new MongoClient(uri);
 
 let db;
