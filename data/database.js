@@ -19,6 +19,27 @@ const initDb = (callback) => {
         });
 };
 
+//  * ASYNC / AWAIT VERSION *
+// const initDb = async (callback) => {
+//   if (database) {
+//     console.log('DB is already installed');
+//     return callback(null, database);
+//   }
+
+//   try {
+//     const client = await MongoClient.connect(process.env.MONGODB_URI, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true
+//     });
+
+//     database = client;
+//     callback(null, database);
+//   } catch (err) {
+//     callback(err);
+//   }
+// };
+
+
 const getDatabase = () => {
     if (!database) {
         throw Error(' Database not initialized')

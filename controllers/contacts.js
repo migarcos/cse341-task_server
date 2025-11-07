@@ -18,7 +18,71 @@ const getSingle = async (req, res) => {
     });
 }
 
+const createContact = async(req, res) => {
+    const contact = {
+        firstName : req.body.firstName,
+        lastname : req.body.lastname,
+        email : req.body.email,
+        favoriteColor : req.body.favoriteColor,
+        birthday : req.body.birthday
+    };
+    const response = await mongodb.getDatabase().db().collection('contact').insertOne(contact);
+    if (response.acknowledge) {
+        res.status(204).send;
+    } else {
+        res.status(500).json( response.Error || 'Some error ocurre updating contact');
+    }
+};
+
+const updateContact = async(req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const contact = {
+        firstName : req.body.firstName,
+        lastname : req.body.lastname,
+        email : req.body.email,
+        favoriteColor : req.body.favoriteColor,
+        birthday : req.body.birthday
+    };
+    const response = await mongodb.getDatabase().db().collection('contact').updateOne( { _id: userId }, { $set: contact });
+    if (response.modifiedCount > 0) {
+        res.status(204).send;
+    } else {
+        res.status(500).json( response.Error || 'Some error ocurre updating contact');
+    }
+};
+
+const replaceContact = async(req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const contact = {
+        firstName : req.body.firstName,
+        lastname : req.body.lastname,
+        email : req.body.email,
+        favoriteColor : req.body.favoriteColor,
+        birthday : req.body.birthday
+    };
+    const response = await mongodb.getDatabase().db().collection('contact').replaceOne( { _id: userId }, contact );
+    if (response.modifiedCount > 0) {
+        res.status(204).send;
+    } else {
+        res.status(500).json( response.Error || 'Some error ocurre updating contact');
+    }
+};
+
+const deleteContact = async(req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection('contact').deleteOne( { _id: userId}, true);
+    if (response.deletedCount > 0) {
+        res.status(204).send;
+    } else {
+        res.status(500).json( response.Error || 'Some error ocurre updating contact');
+    }
+};
+
 module.exports = { 
     getAll,
-    getSingle
+    getSingle,
+    createContact,
+    updateContact,
+    replaceContact,
+    deleteContact
 };
