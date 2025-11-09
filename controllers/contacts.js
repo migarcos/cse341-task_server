@@ -73,7 +73,7 @@ const updateContact = async(req, res) => {
     };
     const response = await mongodb.getDatabase().db().collection('contact').updateOne( { _id: userId }, { $set: contact });
     if (response.modifiedCount > 0) {
-        res.status(204).send;
+        res.status(204).json({ message: 'Contact updated successfully' }); // info the user the success
     } else {
         res.status(500).json( response.Error || 'Some error ocurre updating contact');
     }
@@ -99,7 +99,7 @@ const replaceContact = async(req, res) => {
                         .replaceOne({ _id: userId }, contact);
 
         if (response.modifiedCount > 0) {
-            res.status(204).send();
+            res.status(204).json({ message: 'Contact updated successfully' }); // info the user the success
         } else {
             res.status(404).json({ error: 'Contact not found or no changes applied' });
         }
@@ -121,7 +121,7 @@ const deleteContact = async(req, res) => {
         .deleteOne({ _id: userId });
 
         if (response.deletedCount > 0) {
-        res.status(204).send(); 
+        res.status(204).json({ message: 'Contact deleted successfully' }); 
         } else {
         res.status(404).json({ error: 'Contact not found or already deleted' });
         }
