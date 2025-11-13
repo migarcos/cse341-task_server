@@ -1,4 +1,7 @@
 const router = require('express').Router();
+const { validationResult } = require('express-validator');
+const { validateContact } = require('./contactValidation');
+
 
 router.use('/', require('./swagger'));
 

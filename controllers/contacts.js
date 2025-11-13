@@ -46,19 +46,6 @@ const createContact = async(req, res) => {
         console.error('Error creating contact:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-    // const contact = {
-    //     firstName : req.body.firstName,
-    //     lastname : req.body.lastname,
-    //     email : req.body.email,
-    //     favoriteColor : req.body.favoriteColor,
-    //     birthday : req.body.birthday
-    // };
-    // const response = await mongodb.getDatabase().db().collection('contact').insertOne(contact);
-    // if (response.acknowledged) {
-    //     res.status(204).send;
-    // } else {
-    //     res.status(500).json( response.Error || 'Some error ocurre updating contact');
-    // }
 };
 
 const updateContact = async(req, res) => {
