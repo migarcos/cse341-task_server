@@ -36,7 +36,7 @@ Content-Type: application/json
 
 {
     "firstName": "Salma",
-    "lastname": "Hayek",
+    "lastname": "HAYEK",
     "email": "salmahayek@outlook.com",    
     "favoriteColor": "red",
     "birthday": "1966-09-02"

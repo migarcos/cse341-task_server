@@ -3,6 +3,7 @@ const router = express.Router();
 const { validationResult } = require("express-validator");
 const contactsController = require('../controllers/contacts');
 const  { validateContact } = require('../middleware/validator');
+const validation = require('../middleware/validate');
 
 router.get('/contacts', contactsController.getAll);
 router.get('/contacts/:id', contactsController.getSingle);
@@ -18,6 +19,7 @@ router.post('/contacts/', validateContact, async (req, res) => {
     return contactsController.createContact(req, res);
 });
 
-router.put('/contacts/:id', contactsController.replaceContact);
+router.put('/contacts/:id', validation.saveContact, contactsController.replaceContact);
+
 router.delete('/contacts/:id', contactsController.deleteContact);
 module.exports =  router ;
